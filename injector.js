@@ -6,11 +6,14 @@ class Injector {
         this.button = button;
         this.injectedClick = false;
         this.settings = settings
+        this.clickChance = 1
     }
 
     setInjected(val) {
         this.injectedClick = !!val;
     }
+
+    
 
     injected() {
         return this.injectedClick
@@ -18,9 +21,9 @@ class Injector {
 
     addClick(cps) {
         //Click Chance
-        if (Math.random() > this.settings.clickChance) {
+        if (Math.random() > this.clickChance) {
             return;
-        }
+        } 
 
         //Inject click in-between
         let timeout = 500 / cps

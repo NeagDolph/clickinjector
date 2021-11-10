@@ -3,8 +3,21 @@
     "dev": "node script.js"
   },
   "dependencies": {
+    "@serialport/parser-readline": "^9.0.7",
     "iohook": "^0.6.6",
+    "node-hid": "^2.1.1",
     "robotjs": "^0.6.0",
+    "webpack-node-externals": "^3.0.0",
     "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "serialport": "^9.2.0",
+    "sf": "^0.2.0",
+    "usb-detection": "^4.10.0",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "exports": {
+    ".": "./script.js"
   }
 }
