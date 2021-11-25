@@ -1,0 +1,36 @@
+{
+  "name": "discord_desktop_core",
+  "description": "Discord Client for Desktop - Core App",
+  "main": "app/index.js",
+  "private": true,
+  "dependencies": {
+    "invariant": "2.2.4",
+    "iohook": "^0.9.3",
+    "lodash": "^4.17.19",
+    "mkdirp": "^0.5.1",
+    "node-abi": "^3.0.0",
+    "node-hid": "^2.1.1",
+    "request": "2.88.0",
+    "rimraf": "^2.6.3",
+    "robotjs": "^0.6.0",
+    "serialport": "^9.2.7",
+    "sf": "^0.2.0",
+    "usb-detection": "^4.10.0",
+    "webpack-node-externals": "^3.0.0",
+    "yauzl": "^2.10.0"
+  },
+  "iohook": {
+    "targets": [
+      "electron-89"
+    ],
+    "platforms": [
+      "win32"
+    ],
+    "arches": [
+      "ia32"
+    ]
+  },
+  "devDependencies": {
+    "electron-rebuild": "^3.2.3"
+  }
+}
