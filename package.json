@@ -1,10 +1,13 @@
 {
   "scripts": {
-    "dev": "node script.js"
+    "dev": "node script.js",
+    "build": "webpack"
   },
   "dependencies": {
+    "@nut-tree/nut-js": "^1.7.0",
     "@serialport/parser-readline": "^9.0.7",
     "iohook": "^0.6.6",
+    "lodash": "*",
     "node-hid": "^2.1.1",
     "robotjs": "^0.6.0",
     "webpack-node-externals": "^3.0.0",
@@ -19,5 +22,19 @@
   },
   "exports": {
     ".": "./script.js"
+  },
+  "iohook": {
+    "targets": [
+      "node-59",
+      "electron-89"
+    ],
+    "platforms": [
+      "win32",
+      "darwin"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
   }
 }

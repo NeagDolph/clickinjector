@@ -1,3 +1,3 @@
-const app = require("./script")
+const GamingChair = require("./script")
 
-app((a, b) => {console.log(a, b)})
+new GamingChair((a, b) => {console.log(a, b)});

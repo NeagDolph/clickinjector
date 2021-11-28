@@ -1,3 +1,5 @@
+const GamingChair = require("./script");
+
 class Listener {
     constructor(button, injector, settings, callback) {
         this.settings = settings;
@@ -10,12 +12,14 @@ class Listener {
         this.lastClick = new Date();
         this.clicks = 0;
         this.totalclicks = 0;
+
+        this.increaseMax = this.increaseMax.bind(this);
+        this.decreaseMax = this.decreaseMax.bind(this);
     }
 
     increaseMax(amount) {
         this.max += amount;
         this.callback(this.button, this.max)
-        console.log(this.button, this.max)
     }
 
     decreaseMax(amount) {
@@ -23,7 +27,7 @@ class Listener {
         this.callback(this.button, this.max)
     }
 
-    hookEvent(event) {
+    hookEvent = (event) => {
         if (event.button === this.button) {
             this.listenClick()
         }
@@ -47,10 +51,8 @@ class Listener {
 
     listenClick() {
         this.totalclicks++;
-        
-        let totalcps = this.totalcps
 
-        if (totalcps > this.max) return;
+        if (this.totalcps > this.max) return;
 
         //Kill injected click events
         if (this.injector.injected()) {
@@ -75,7 +77,7 @@ class Listener {
 
         //Inject clicks
         if (cps > this.settings.minSpeed && this.clicks >= 3) {
-            if (totalcps > this.max) return;
+            // if (totalcps > this.max) return;
             this.injector.addClick(cps);
         }
 

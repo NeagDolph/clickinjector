@@ -1,4 +1,3 @@
-const ioHook = require('iohook');
 const robot = require("robotjs");
 
 class Injector {
@@ -10,10 +9,10 @@ class Injector {
     }
 
     setInjected(val) {
-        this.injectedClick = !!val;
+        this.injectedClick = val;
     }
 
-    
+
 
     injected() {
         return this.injectedClick
@@ -23,26 +22,28 @@ class Injector {
         //Click Chance
         if (Math.random() > this.clickChance) {
             return;
-        } 
+        }
 
         //Inject click in-between
-        let timeout = 500 / cps
+        let waitTimeout = 500 / cps;
 
         //Vary click speed by randomized amount based on set variation
-        let variation = timeout * this.settings.clickVariation * (Math.random() - 0.5)
-        let finalTimeout = variation + timeout;
+        let variation = waitTimeout * this.settings.clickVariation * Math.abs(Math.random() - 0.5)
+
+        let finalTimeout = (waitTimeout - variation);
 
         // console.log("CPS:", cps, " | Timeout:", finalTimeout)
 
         setTimeout(this.performClick.bind(this), finalTimeout)
     }
 
-    performClick() {
+    async performClick() {
         let buttonSide = this.button === 1 ? "left" : "right";
-
-        this.setInjected(true);
+        // let buttonSide = this.button === 1 ? mouse.leftClick : mouse.rightClick;
+        this.setInjected(true)
 
         robot.mouseClick(buttonSide);
+        robot.setMouseDelay(0)
     }
 
 
