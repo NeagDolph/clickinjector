@@ -20,7 +20,7 @@ function deleteOldFolder(asarDest) {
 
                 res()
             })
-        }
+        } else res();
     })
 }
 
